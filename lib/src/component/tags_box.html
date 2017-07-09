@@ -1,0 +1,35 @@
+<style>
+    span {
+        margin-right: 5px;
+    }
+    
+    .is-v-center {
+        align-items: center;
+    }
+    
+    input {
+        box-shadow: none;
+        border: none;
+        font-weight: lighter;
+    }
+    .is-flex.is-wrap{
+        flex-wrap: wrap;
+    }
+    .has-border{
+        border: 1px solid hsl(0, 0%, 96%);
+    }
+    .panel{
+        padding: 5px;
+    }
+</style>
+<div class="is-flex">
+    <div #tagPanel class="panel is-flex is-v-center is-wrap" [class.has-border]="hasBorder">
+        <span *ngFor="let tag of tags" class="tag is-medium">
+            {{tag}}
+        <button class="delete is-small" (click)="onDeleteTag($event, tag)"></button>
+        </span>
+        <p class="control">
+            <input class="input" type="text" [(ngModel)]="tagVal"  (keydown)="onKeydown($event)" [attr.placeholder]="placeholder">
+        </p>
+    </div>
+</div>
